@@ -18,7 +18,7 @@ def predict_penguin_species(model, species_encoder, island_encoder, sex_encoder,
         'culmen_depth_mm': [culmen_depth_mm],
         'flipper_length_mm': [flipper_length_mm],
         'body_mass_g': [body_mass_g],
-        'sex': [sex.lower()]  # Ensure sex is in lowercase
+        'sex': [sex]  # Ensure sex is in lowercase
     })
     
     # Apply encoding to categorical columns
