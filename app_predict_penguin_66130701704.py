@@ -70,12 +70,11 @@ def app():
         st.dataframe(x_new)  # Display the DataFrame
         # Make prediction
         prediction = model.predict(x_new)
-        predicted_species = species_encoder.inverse_transform(prediction)
         
         
         
         # Display result
-        st.write(f"The predicted penguin species is **{ predicted_species[0]}**.")
+        st.write(f"The predicted penguin species is **{ prediction[0]}**.")
 
 # Run the app
 if __name__ == "__main__":
