@@ -62,7 +62,7 @@ def app():
             'body_mass_g': [body_mass_g],
             'sex': [sex.upper()]  # Ensure sex is in lowercase
         })
-        x
+        
         # Apply encoding to categorical columns
         x_new['island'] = island_encoder.transform(x_new['island'])
         x_new['sex'] = sex_encoder.transform(x_new['sex'])  # Transform 'male' or 'female'
