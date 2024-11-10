@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 # ฟังก์ชันสำหรับโหลดโมเดลและตัวแปลงที่ใช้ในการฝึก
 @st.cache
 def load_model():
-    with open('model_penguin.pkl', 'rb') as f:
+    with open('model_penguin_66130701704.pkl', 'rb') as f:
         model = pickle.load(f)
     with open('island_encoder.pkl', 'rb') as f:
         island_encoder = pickle.load(f)
@@ -43,7 +43,11 @@ def predict_penguin_species(model, island_encoder, sex_encoder, species_encoder,
 # การสร้างแอปด้วย Streamlit
 def app():
     # โหลดโมเดลและตัวแปลงที่ใช้
-    model, island_encoder, sex_encoder, species_encoder = load_model()
+   # model, island_encoder, sex_encoder, species_encoder = load_model()
+   
+    with open('model_penguin_66130701704.pkl', 'rb') as file:
+    # Load the data from the file
+      model, species_encoder, island_encoder ,sex_encoder = pickle.load(file)
 
     # ตั้งชื่อและคำอธิบายแอป
     st.title("Penguin Species Prediction")
