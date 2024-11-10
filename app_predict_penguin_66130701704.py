@@ -18,12 +18,12 @@ def predict_penguin_species(model, species_encoder, island_encoder, sex_encoder,
         'culmen_depth_mm': [culmen_depth_mm],
         'flipper_length_mm': [flipper_length_mm],
         'body_mass_g': [body_mass_g],
-        'sex': [sex]
+        'sex': [sex.lower()]  # Ensure sex is in lowercase
     })
     
     # Apply encoding to categorical columns
     x_new['island'] = island_encoder.transform(x_new['island'])
-    x_new['sex'] = sex_encoder.transform(x_new['sex'])
+    x_new['sex'] = sex_encoder.transform(x_new['sex'])  # Transform 'male' or 'female'
     
     # Make prediction
     prediction = model.predict(x_new)
@@ -45,7 +45,7 @@ def app():
 
     # Input fields
     island = st.sidebar.selectbox("Island", ["Torgersen", "Biscoe", "Dream"])
-    sex = st.sidebar.selectbox("Sex", ["Male", "Female"])
+    sex = st.sidebar.selectbox("Sex", ["Male", "Female"])  # User inputs 'Male' or 'Female'
     culmen_length_mm = st.sidebar.slider("Culmen Length (mm)", 30.0, 70.0, 45.0)
     culmen_depth_mm = st.sidebar.slider("Culmen Depth (mm)", 10.0, 25.0, 15.0)
     flipper_length_mm = st.sidebar.slider("Flipper Length (mm)", 150.0, 250.0, 200.0)
